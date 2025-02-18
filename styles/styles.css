@@ -1,0 +1,272 @@
+header,
+footer,
+h1,
+h2 {
+    font-family: "Alumni sans", Verdana, Geneva, Tahoma, sans-serif;
+}
+
+h1 {
+    position: relative;
+    background-color: var(--dark-blue);
+    color: var(--yellow);
+    font-size: 1.4rem;
+    text-decoration: underline;
+    width: 50%;
+    font-weight: bold;
+    height: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-left: 20px;
+}
+
+body {
+    font-family: "Cantarell", Georgia, 'Times New Roman', Times, serif;
+    background-color: var(--grey);
+}
+
+.mobile-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    position: relative;
+}
+
+.mobile-header i {
+    font-size: 1.5rem;
+    color: var(--dark-blue);
+}
+
+nav,
+#menu-checkbox {
+    display: none;
+}
+
+#menu-checkbox:checked + nav {
+    display: block;
+}
+
+header {
+    position: relative;
+    font-size: 1.2rem;
+}
+
+nav {
+    position: absolute;
+    background: var(--dark-blue);
+    width: 100%;
+    left: 0px;
+    top: 50px;
+    z-index: 10;
+}
+
+nav a {
+    display: block;
+    color: var(--white);
+    padding: 10px 20px;
+    text-decoration: none;
+}
+
+nav a:hover,
+nav a:checked {
+    text-decoration: underline;
+    background-color: var(--dark-blue);
+    color: var(--yellow);
+}
+
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+}
+    
+.logo {
+    max-width: 257px;
+    height: auto;
+    margin: 0;
+    padding-top: 10px;
+}
+
+.cta-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 45px;
+    background-color: var(--yellow);
+    color: var(--dark-blue);
+    text-decoration: none;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin: 20px;
+    font-weight: bold;
+    border: 4px solid var(--dark-blue);
+    border-radius: 5px;
+    padding: 5px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+}
+
+.cta:hover,
+.cta:focus {
+    color: var(--dark-blue);
+    font-size: 1.5rem;
+    font-weight: 700;
+    -webkit-background-origin: var(--white);
+    transform: scale(1.05);
+    transition: all 0.1s ease;
+}
+
+    
+.logo-container-footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-top: 5px solid var(--dark-blue);  
+}
+
+.logo-footer {
+    width: 25vh;
+    height: auto;
+    padding-top: 20px;
+}
+
+footer a.footer-logo :hover,
+footer a.footer-logo :focus {
+    text-decoration: none;
+    background-color: var(--yellow);
+    color: none;
+}
+
+.social-icons a {
+    font-size: 1.4rem;
+    gap: 30px;
+}
+
+.contact-details,
+.footer-links {
+    font-family: "Atma", Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--dark-blue);
+    text-align: center;
+    align-items: center;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    margin: 30px 0 20px 0;
+}
+
+.museum-details p {
+    line-height: 0;
+}
+
+footer a {
+    text-decoration: none;
+    color: var(--dark-blue);
+    font-size: 0.875rem;
+    line-height: 1.9;
+    letter-spacing: 2px;
+    font-weight: 700;
+}
+
+.social-icons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+footer a:hover,
+footer a:focus {
+    text-decoration: underline;
+    background-color: var(--dark-blue);
+    color: var(--yellow);
+    border: 2px solid var(--dark-blue);
+}
+
+.copyright {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    margin-top: 0;
+}
+
+@media (min-width: 600px) {
+    #menu-checkbox,
+    .hamburger-icon, 
+    .mobile-header {
+        display: none;
+    }
+       
+    nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        align-items: center;
+        background-color: var(--dark-blue);
+        padding: 10px 0;
+        margin: 0;
+        top: 0;
+        width: 100%;
+        position: relative;
+    }
+
+    h1 {
+        position: relative;
+        background-color: #113340;
+        color: #f2b544;
+        font-size: 2.5rem;
+        text-decoration: underline;
+        width: 50%;
+        font-weight: bold;
+        height: 60px;
+        padding: 10px 20px;
+        margin-left: 50px;
+    }
+
+    .logo-container {
+        position: relative;
+        justify-content: center;
+        margin: 0;
+    }
+        
+    .logo {
+        padding-top: 20px;
+        margin: 0;
+    }
+
+    nav a {
+        display: inline-block;
+        color: var(--white);
+        padding: 0 15px;
+        font-size: 1.5rem;
+        text-transform: uppercase;
+    }
+
+    nav a:hover,
+    nav a:focus {
+        text-decoration: underline;
+    }
+
+    nav a i {
+        font-size: 1.2rem;
+        margin-left: 5px;
+    }
+

@@ -1,0 +1,51 @@
+h2 {
+    font-family: "Cantarell", Verdana, Geneva, Tahoma, sans-serif; 
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    color: #113340;
+    background-color: rgb(205, 215, 215);
+    letter-spacing: 2px;
+    font-weight: bold;
+    max-width: 100%;
+    margin: 20px 20px;
+    padding: 10px;
+}
+
+.hiking_img {
+    background-color: rgb(205, 215, 215);
+    display: flex;
+    align-items: center;
+    width: calc(100% - 40px);
+    height: auto;
+    margin: 20px 20px;    
+}
+
+.writing {
+    background-color: rgb(205, 215, 215);
+    padding: 50px;
+    margin: 0 20px 20px 20px;
+}
+
+@media (min-width: 600px) {
+    h2 {
+        font-size: 2.5rem;
+        padding: 30px;
+        margin: 50px;
+        border: solid 10px var(--dark-blue);
+    }
+
+    .hiking_img {
+        margin: 50px;
+        border: solid 10px var(--dark-blue);
+        width: calc(100% - 120px);
+    }
+
+    .writing {
+        font-size: 2rem;
+        padding: 150px;
+        margin: 50px;
+        border: solid 10px var(--dark-blue);
+    }
+}
+
+
