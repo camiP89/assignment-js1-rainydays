@@ -23,6 +23,17 @@
     margin: 20px 20px;
 }
 
+.heading-sale {
+    background-color: white;
+    color: red;
+    font-size: 2.5rem;
+    text-decoration: none;
+    font-weight: 800;
+    padding-bottom: 20px;
+    border: 5px solid red;
+
+}
+
 .jacket-data-container {
     display: flex;
     flex-direction: column;
@@ -30,17 +41,14 @@
     border-radius: 5px;
     margin: 10px 10px;
     padding: 10px;
-    background-color: var(--light-grey);
+    background-color: var(--white);
 }
 
 .jacket-data-container img {
-    display: flex;
-    justify-content: center;
-    width: calc(100%-80px);
+    width: calc(100% - 80px);
     margin: 10px 20px;
     height: auto;
     display: block;
-    border: 5px solid var(--dark-blue);
 }
 
 .jacket-data-container h2 {
@@ -48,26 +56,40 @@
     justify-content: center;
     text-transform: uppercase;
     font-size: 1.7rem;
+    font-weight: 800;
+    text-align: center;
     text-decoration: underline;
+}
+
+.jacket-data-container .discounted-price {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--white);
+    background-color: red;
+    margin: 0 40px;
 }
 
 .jacket-data-container .jacket-price {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: var(--yellow);
-    background-color: var(--dark-blue);
-    margin: 0 20px;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: rgb(96, 91, 91);
+    text-decoration: line-through;
+    margin: 0 40px;
 }
 
+
 .jacket-data-container p {
-    font-family:  font-family: "Alumni sans", Verdana, Geneva, Tahoma, sans-serif;
+    font-family: "Alumni sans", Verdana, Geneva, Tahoma, sans-serif;
     font-size: 1.1rem;
 }
 
-@media (min-width:400px) {
+@media (min-width:480px) {
     .logo-container {
         position: relative;
         background-image: url(../assets/beach-yellow-jacket.jpg);
@@ -89,4 +111,63 @@
         width: calc(100% - 40px);
         margin: 20px 20px;
     }
+
+    #jacket-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(6, auto);
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        margin: 10px;
+        width: calc(100% - 40px);
+        gap: 15px;
+        box-sizing: border-box;
+    }
+
+    .jacket-data-container {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      box-sizing: border-box;
+    }
+
+    .jacket-data-container img {
+        width: 100%;
+        max-width: 230px;
+        height: auto;
+        margin: 5px;
+        object-fit: cover;
+        box-sizing: border-box;
+        align-items: center;
+        justify-content: center;
+    }
 } 
+
+@media (min-width:720px) {
+    #jacket-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(4, auto);  
+        margin-bottom: 20px;
+    }   
+
+    .jacket-data-container img {
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+@media (min-width:1120px) {
+    #jacket-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(3, auto);  
+    } 
+
+    .jacket-data-container img {
+        justify-content: center;
+        align-items: center;
+    }
+}
+

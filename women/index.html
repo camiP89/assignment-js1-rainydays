@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A great selection of womens jackets for all weather types.">
+    <meta name="description" content="A great selection of women's jackets for all weather types.">
     <title>RainyDays | Women</title>
     <script src="https://kit.fontawesome.com/bfed71705b.js" crossorigin="anonymous"></script>
     <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16x16.png"> 
@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="../styles/styles.css" >
     <link rel="stylesheet" href="../styles/women.css" > 
     <link rel="stylesheet" href="../styles/variables.css" >
+    <script type="module" src="../scripts/women.mjs"></script>
 </head>
 <body>
     <header>
@@ -22,7 +23,7 @@
             <label for="menu-checkbox" class="hamburger-icon">
                 <i class="fa-solid fa-bars"></i>
             </label>
-            <a href="pages/cart.html" aria-label="Cart">
+            <a href="../cart/index.html" aria-label="Cart">
                 <i class="fa-solid fa-basket-shopping"></i>
             </a>
         </div>
@@ -39,18 +40,18 @@
         </nav>
     </header>
     <div class="logo-container">
-        <a href="../index.html">
+        <a href="/index.html">
           <img src="../assets/rainydayslogo.png" alt="RainyDays logo" class="logo" >
         </a>
     </div>
     <main>
-        <h1>Women</h1>
+        <h1 class="heading-women"></h1>
         <div id="jacket-container">
         </div>
     </main>
     <footer>
         <div class="logo-container-footer">
-            <a href="../index.html" class="footer-logo">
+            <a href="/index.html" class="footer-logo">
                 <img src="../assets/rainydayslogo.png" alt="RainyDays logo" class="logo-footer">
             </a>
         </div>
@@ -66,7 +67,7 @@
             <a href="/about.html" class="ABOUT">ABOUT</a>
             <a href="/contact.html">CONTACT</a>
             <a href="../pages/cart.html">CART</a>
-            <a href="pages/terms-and-conditions.html">TERMS AND CONDITIONS</a>
+            <a href="../terms-and-conditions/index.html">TERMS AND CONDITIONS</a>
         </div>
         <div class="social-icons">
             <a href="https://www.facebook.com" aria-label="Link to Facebook">
@@ -87,6 +88,5 @@
         </div>
         <p class="copyright">Copyright &copy; RainyDays</p> 
     </footer>    
-    <script type="module" src="../scripts/women.mjs"></script>
 </body>
 </html>

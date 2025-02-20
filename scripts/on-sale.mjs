@@ -1,12 +1,6 @@
 import { RAINY_DAYS_END_POINT } from './constants.mjs';
 import { fetchData } from './fetchData.mjs';
 
-let headingText = "SALE ITEMS";
-let heading = document.querySelector("h1");
-heading.innerHTML = headingText;
-
-const jacketContainer = document.getElementById('jacket-container');
-
 export function generateSaleJacketsHtml(jacket) {
   const jacketDataContainer = document.createElement('div');
   jacketDataContainer.classList.add('jacket-data-container');
@@ -22,9 +16,7 @@ export function generateSaleJacketsHtml(jacket) {
     const discountedPrice = document.createElement('span');
     discountedPrice.textContent = `$${jacket.discountedPrice}`;
     discountedPrice.classList.add('discounted-price');
-
     jacketDataContainer.append(jacketTitle, jacketPrice, discountedPrice);
-
   } else {
 
     jacketDataContainer.append(jacketTitle, jacketPrice);
@@ -42,7 +34,7 @@ export function generateSaleJacketsHtml(jacket) {
   return jacketDataContainer;
 }
 
-export function displayJackets(jackets) {
+export function displayJackets(jackets, jacketContainer) {
   jacketContainer.textContent = '';
 
   jackets.forEach((jacket) => {
@@ -51,16 +43,16 @@ export function displayJackets(jackets) {
   });
 }
 
-export async function main() {
+export async function main(jacketContainer) {
   try { 
-   const allJackets = await fetchData(RAINY_DAYS_END_POINT);
-
-   const saleJackets = allJackets.filter(jacket => jacket.onSale === true);
- 
-   displayJackets(saleJackets);
+   const response = await fetchData(RAINY_DAYS_END_POINT);
+   const allJackets = await Response.json();
+   
+   const saleJackets = allJackets.filter(jacket => jacket.onSale === true); 
+   displayJackets(saleJackets, jacketContainer);
   } catch (error) {
-    console.error('Error fetching jacket data', error);
+    console.error('Fetch error:', error.message);
   }
 }
 
-main();
+
