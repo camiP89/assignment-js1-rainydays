@@ -2,7 +2,23 @@ header,
 footer,
 h1,
 h2 {
-    font-family: "Alumni sans", Verdana, Geneva, Tahoma, sans-serif;
+  font-family: "Alumni sans", Verdana, Geneva, Tahoma, sans-serif;
+}
+
+h1 {
+    position: relative;
+    background-color: var(--dark-blue);
+    color: var(--yellow);
+    font-size: 1.4rem;
+    text-decoration: underline;
+    width: 50%;
+    font-weight: bold;
+    height: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-left: 20px;
 }
 
 body {
@@ -111,6 +127,48 @@ nav a:checked {
     transition: all 0.1s ease;
 }
 
+.jacket-data-container {
+    display: flex;
+    flex-direction: column;
+    border: 5px solid var(--dark-blue);
+    border-radius: 5px;
+    margin: 10px 10px;
+    padding: 10px;
+    background-color: var(--white);
+}
+
+.jacket-data-container img {
+    width: calc(100% - 80px);
+    margin: 10px 20px;
+    height: auto;
+    display: block;
+}
+
+.jacket-data-container h2 {
+    display: flex;
+    justify-content: center;
+    text-transform: uppercase;
+    font-size: 1.7rem;
+    font-weight: 800;
+    text-align: center;
+    text-decoration: underline;
+}
+
+.jacket-data-container .jacket-price {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--yellow);
+    background-color: var(--dark-blue);
+    margin: 0 40px;
+}
+
+.jacket-data-container p {
+    font-family: "Alumni sans", Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1.1rem;
+}
     
 .logo-container-footer {
     display: flex;
@@ -152,10 +210,6 @@ footer a.footer-logo :focus {
     margin: 30px 0 20px 0;
 }
 
-.museum-details p {
-    line-height: 0;
-}
-
 footer a {
     text-decoration: none;
     color: var(--dark-blue);
@@ -192,7 +246,40 @@ footer a:focus {
     margin-top: 0;
 }
 
-@media (min-width: 600px) {
+@media (min-width: 400px) {
+    #jacket-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(6, auto);
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    margin: 10px;
+    width: calc(100% - 40px);
+    gap: 15px;
+    box-sizing: border-box;
+    }
+
+    .jacket-data-container {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    box-sizing: border-box;
+    }
+
+    .jacket-data-container img {
+    width: 100%;
+    max-width: 230px;
+    height: auto;
+    margin: 5px;
+    object-fit: cover;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+    }
+}
+
+@media (min-width: 620px) {
     #menu-checkbox,
     .hamburger-icon, 
     .mobile-header {
@@ -200,58 +287,110 @@ footer a:focus {
     }
        
     nav {
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-        align-items: center;
-        background-color: var(--dark-blue);
-        padding: 10px 0;
-        margin: 0;
-        top: 0;
-        width: 100%;
-        position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    align-items: center;
+    background-color: var(--dark-blue);
+    padding: 10px 0;
+    margin: 0;
+    top: 0;
+    width: 100%;
+    position: relative;
     }
 
     h1 {
-        position: relative;
-        background-color: #113340;
-        color: #f2b544;
-        font-size: 2.5rem;
-        text-decoration: underline;
-        width: 50%;
-        font-weight: bold;
-        height: 60px;
-        padding: 10px 20px;
-        margin-left: 50px;
+    position: relative;
+    background-color: #113340;
+    color: #f2b544;
+    font-size: 2.5rem;
+    text-decoration: underline;
+    width: 50%;
+    font-weight: bold;
+    height: 60px;
+    padding: 10px 20px;
+    margin-left: 50px;
     }
 
     .logo-container {
-        position: relative;
-        justify-content: center;
-        margin: 0;
+    position: relative;
+    justify-content: center;
+    margin: 0;
     }
         
     .logo {
-        padding-top: 20px;
-        margin: 0;
+    padding-top: 20px;
+    margin: 0;
     }
 
     nav a {
-        display: inline-block;
-        color: var(--white);
-        padding: 0 15px;
-        font-size: 1.5rem;
-        text-transform: uppercase;
+    display: inline-block;
+    color: var(--white);
+    padding: 0 15px;
+    font-size: 1.5rem;
+    text-transform: uppercase;
     }
 
     nav a:hover,
     nav a:focus {
-        text-decoration: underline;
+    text-decoration: underline;
     }
 
     nav a i {
-        font-size: 1.2rem;
-        margin-left: 5px;
+    font-size: 1.2rem;
+    margin-left: 5px;
+    }
+
+    #jacket-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(6, auto);
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    margin: 10px;
+    width: calc(100% - 40px);
+    gap: 15px;
+    box-sizing: border-box;
+    }
+
+    #jacket-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, auto);  
+    margin-bottom: 20px;
+    }   
+    
+    .jacket-data-container img {
+    justify-content: center;
+    align-items: center;
+    }
+} 
+
+@media (min-width:720px) {
+    #jacket-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, auto);  
+    margin-bottom: 20px;
+    }   
+
+    .jacket-data-container img {
+    justify-content: center;
+    align-items: center;
+    }
+}
+
+@media (min-width:1120px) {
+    #jacket-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, auto);  
+    } 
+
+    .jacket-data-container img {
+    justify-content: center;
+    align-items: center;
     }
 }
 

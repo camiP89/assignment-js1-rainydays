@@ -3,7 +3,7 @@ import { fetchData } from './fetchData.mjs';
 
 const jacketContainer = document.getElementById('jacket-container');
 
-export function generateSaleJacketsHtml(jacket) {
+export function generateJacketsHtml(jacket) {
   const jacketDataContainer = document.createElement('div');
   jacketDataContainer.classList.add('jacket-data-container');
 
@@ -14,17 +14,8 @@ export function generateSaleJacketsHtml(jacket) {
   jacketPrice.classList.add('jacket-price');
   jacketPrice.textContent = `$${jacket.price}`;
 
-  if (jacket.discountedPrice) {
-    const discountedPrice = document.createElement('span');
-    discountedPrice.textContent = `$${jacket.discountedPrice}`;
-    discountedPrice.classList.add('discounted-price');
-    jacketDataContainer.append(jacketTitle, jacketPrice, discountedPrice);
-
-  } else {
-    jacketDataContainer.append(jacketTitle, jacketPrice);
-  }
- 
   const jacketImage = document.createElement('img');
+
   if (jacket.image && typeof jacket.image.url === 'string') {
     jacketImage.src = jacket.image.url;
     jacketImage.alt = jacket.image.alt;
@@ -32,7 +23,7 @@ export function generateSaleJacketsHtml(jacket) {
     console.error('invalid image URL:', jacket.image);
   }
 
-  jacketDataContainer.append(jacketImage);
+  jacketDataContainer.append(jacketTitle, jacketPrice, jacketImage);
   return jacketDataContainer;
 }
 
@@ -40,20 +31,13 @@ export function displayJackets(jackets) {
   jacketContainer.textContent = '';
 
   jackets.forEach((jacket) => {
-    const saleJacketsHtml = generateSaleJacketsHtml(jacket);
-    jacketContainer.append(saleJacketsHtml);
+    const jacketHtml = generateJacketsHtml(jacket);
+    jacketContainer.append(jacketHtml);
   });
 }
 
-export async function sale() {
-  try { 
-   const allJackets = await fetchData(RAINY_DAYS_END_POINT);
-
-   const saleJackets = allJackets.filter(jacket => jacket.onSale === true);
- 
-   displayJackets(saleJackets);
-  } catch (error) {
-    console.error('Error fetching jacket data', error);
-  }
+export async function createJacketsDisplay() {
+  const data = await fetchData(RAINY_DAYS_END_POINT);
+  displayJackets(data);
 }
 

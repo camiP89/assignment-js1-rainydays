@@ -79,6 +79,7 @@
     font-size: 1.6rem;
     font-weight: 700;
     color: rgb(96, 91, 91);
+    background-color: white;
     text-decoration: line-through;
     margin: 0 40px;
 }
