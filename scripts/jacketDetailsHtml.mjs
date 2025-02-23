@@ -1,5 +1,8 @@
-export function createJacketDetailsHtml(jacket) {
-  const jacketContainer = document.createElement('div');
+import { RAINY_DAYS_END_POINT } from './constants.mjs';
+import { fetchData } from './fetchData.mjs';
+
+export async function createJacketDetailsHtml(jacket) {
+  const jacketDetailsContainer = document.createElement('div');
 
   const jacketImage = document.createElement("img");
   jacketImage.src = `${jacket.image}`;
@@ -25,8 +28,8 @@ export function createJacketDetailsHtml(jacket) {
 
 jacketAddToCartButton.textContent = "Add to cart";
 
-jacketContainer.append(jacketImage, jacketTitle, jacketPrice, jacketColor, jacketSize, jacketAddToCartButton);
+jacketDetailsContainer.append(jacketImage, jacketTitle, jacketPrice, jacketColor, jacketSize, jacketAddToCartButton);
 
-return jacketContainer;
+return jacketDetailsContainer;
 }
   

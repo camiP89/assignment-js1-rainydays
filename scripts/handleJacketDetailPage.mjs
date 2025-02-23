@@ -1,6 +1,6 @@
 import { RAINY_DAYS_END_POINT } from './constants.mjs';
 import { fetchData } from "./fetchData.mjs";
-import { generateJacketDetailsHtml } from './generateSingleJacketHtml.mjs';
+import { createSingleJacketHtml } from './createSingleJacketHtml.mjs';
 
 function getIdFromURL() {
   const url = new URL(window.location);
@@ -9,11 +9,22 @@ function getIdFromURL() {
   return jacketId;
 }
 
-async function main() {
-  const jacketId = getIdFromURL();
-  const Data = fetchData(`${RAINY_DAYS_END_POINT}/${jacketId}`);
-  const createJacketDetailsHtml = jacketDetailsHtml(jacket);
-  jacketContainer.append(jacketDetailsHtml);
-}
+const jacketDetailsContainer = document.querySelector("#jacket-details-container");
 
-main();
+export async function displayJacketDetails() {
+  const jacketId = getIdFromURL(RAINY_DAYS_END_POINT);
+  if (!jacketId) {
+    console.error("Jacket ID is missing in the URL");
+    return;
+  }
+
+  try {
+    const jacketData = await fetchData(`${URL}${jacketId}`);
+
+    const jacketHtml = createSingleJacketHtml(jacketData);
+    jacketDetailsContainer.innerHTML = '';
+    jacketDetailsContainer.append(jacketHtml);
+  } catch (error) {
+    console.error('error fetching jacket details:', error);
+  }
+} 

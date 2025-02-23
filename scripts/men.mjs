@@ -40,7 +40,7 @@ function displayJackets(jackets) {
   });
 }
 
-async function main() {
+async function men() {
   const allJackets = await fetchData(RAINY_DAYS_END_POINT);
 
   const maleJackets = allJackets.filter(jacket => jacket.gender === 'Male');
@@ -48,4 +48,4 @@ async function main() {
   displayJackets(maleJackets);
 }
 
-main();
+men();

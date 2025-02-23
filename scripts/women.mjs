@@ -7,7 +7,7 @@ heading.innerHTML = headingText;
 
 const jacketContainer = document.getElementById('jacket-container');
 
-function generateWomensJacketsHtml(jacket) {
+function createWomensJacketsHtml(jacket) {
   const jacketDataContainer = document.createElement('div');
   jacketDataContainer.classList.add('jacket-data-container');
 
@@ -35,12 +35,12 @@ function displayJackets(jackets) {
   jacketContainer.textContent = '';
 
   jackets.forEach((jacket) => {
-    const womensJacketsHtml = generateWomensJacketsHtml(jacket);
+    const womensJacketsHtml = createWomensJacketsHtml(jacket);
     jacketContainer.append(womensJacketsHtml);
   });
 }
 
-async function main() {
+async function woman() {
   const allJackets = await fetchData(RAINY_DAYS_END_POINT);
 
   const femaleJackets = allJackets.filter(jacket => jacket.gender === 'Female');
@@ -48,4 +48,4 @@ async function main() {
   displayJackets(femaleJackets);
 }
 
-main();
+woman();

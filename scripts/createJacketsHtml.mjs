@@ -1,11 +1,16 @@
 import { RAINY_DAYS_END_POINT } from './constants.mjs';
 import { fetchData } from './fetchData.mjs';
+import { createSingleJacketHtml } from './createSingleJacketHtml.mjs';
 
 const jacketContainer = document.getElementById('jacket-container');
 
-export function generateJacketsHtml(jacket) {
+export function createJacketsHtml(jacket) {
+  console.log(jacket);
   const jacketDataContainer = document.createElement('div');
   jacketDataContainer.classList.add('jacket-data-container');
+
+  const jacketLink = document.createElement('a');
+  jacketLink.href = `/jacket-detail/${jacket.id}`;
 
   const jacketTitle = document.createElement('h2');
   jacketTitle.textContent = jacket.title;
@@ -22,22 +27,33 @@ export function generateJacketsHtml(jacket) {
   } else {
     console.error('invalid image URL:', jacket.image);
   }
+  
+  jacketLink.appendChild(jacketImage);
+  jacketLink.appendChild(jacketTitle);
+  jacketLink.appendChild(jacketPrice);
 
-  jacketDataContainer.append(jacketTitle, jacketPrice, jacketImage);
+  jacketDataContainer.appendChild(jacketLink);
+
   return jacketDataContainer;
+
 }
 
 export function displayJackets(jackets) {
   jacketContainer.textContent = '';
 
   jackets.forEach((jacket) => {
-    const jacketHtml = generateJacketsHtml(jacket);
+    const jacketHtml = createJacketsHtml(jacket);
     jacketContainer.append(jacketHtml);
   });
 }
 
-export async function createJacketsDisplay() {
-  const data = await fetchData(RAINY_DAYS_END_POINT);
-  displayJackets(data);
+export async function main() {
+  try {
+    const allJackets = await fetchData(RAINY_DAYS_END_POINT);
+    displayJackets(allJackets);
+  } catch (error) {
+    console.error('Error fetching jackets:', error);
+  }
 }
 
+main();

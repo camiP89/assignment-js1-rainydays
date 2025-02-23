@@ -22,5 +22,7 @@ export async function fetchData(url) {
     return data;
   } catch (error) {
     console.error('Fetch error:', error.message);
+
+    throw error;
   }
 }

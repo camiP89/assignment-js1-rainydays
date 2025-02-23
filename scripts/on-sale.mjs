@@ -3,7 +3,7 @@ import { fetchData } from './fetchData.mjs';
 
 const jacketContainer = document.getElementById('jacket-container');
 
-export function generateSaleJacketsHtml(jacket) {
+export function createSaleJacketsHtml(jacket) {
   const jacketDataContainer = document.createElement('div');
   jacketDataContainer.classList.add('jacket-data-container');
 
@@ -40,7 +40,7 @@ export function displayJackets(jackets) {
   jacketContainer.textContent = '';
 
   jackets.forEach((jacket) => {
-    const saleJacketsHtml = generateSaleJacketsHtml(jacket);
+    const saleJacketsHtml = createSaleJacketsHtml(jacket);
     jacketContainer.append(saleJacketsHtml);
   });
 }
