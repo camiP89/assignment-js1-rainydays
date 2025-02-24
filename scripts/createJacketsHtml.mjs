@@ -5,7 +5,6 @@ import { createSingleJacketHtml } from './createSingleJacketHtml.mjs';
 const jacketContainer = document.getElementById('jacket-container');
 
 export function createJacketsHtml(jacket) {
-  console.log(jacket);
   const jacketDataContainer = document.createElement('div');
   jacketDataContainer.classList.add('jacket-data-container');
 
