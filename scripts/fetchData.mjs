@@ -1,3 +1,5 @@
+import { RAINY_DAYS_END_POINT } from "./constants.mjs";
+
 const options = {
   headers: {
     Authorization:

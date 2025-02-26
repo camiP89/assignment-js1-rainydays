@@ -1,32 +1,34 @@
 export function createSingleJacketHtml(jacket) {
-  const jacketContainer = document.createElement("div");
-  jacketContainer.classList.add("jacket-details-container");
+  console.log(jacket);
+  const jacketListItem = document.createElement("div");
+  jacketListItem.classList.add("jacket-data-container");
+
+  const jacketLink = document.createElement('a');
+  jacketLink.href = `/jackets/?id=${jacket.id}`;
+  console.log(jacket.id);
 
   const jacketTitle = document.createElement("h2");
-  jacketTitle.textContent = jacket.title;
-
-  const jacketPrice = document.createElement("p");
-  jacketPrice.textContent = jacket.price;
+  jacketTitle.textContent = `${jacket.title}`;
 
   const jacketImage = document.createElement("img");
-  jacketImage.src = ("img");
+  jacketImage.src = `${jacket.image.url}`;
+
+  const jacketPrice = document.createElement("p");
+  jacketPrice.textContent = `$${jacket.price}`;
   
   const jacketColor = document.createElement("p");
-  jacketColor.textContent = jacket.baseColor;
+  jacketColor.textContent = `${jacket.baseColor}`;
 
-  const jacketAddToCartButton = document.createElement("p");
-  jacketAddToCartButton.addEventListener('click', function(){
+  const jacketSize = document.createElement("p");
+  jacketSize.textContent = `${jacket.sizes.join(", ")}`;
 
-  });
-  jacketAddToCartButton.textContent = "Add to cart";
-
-  jacketLink.appendChild(jacketImage);
   jacketLink.appendChild(jacketTitle);
+  jacketLink.appendChild(jacketImage);
   jacketLink.appendChild(jacketPrice);
   jacketLink.appendChild(jacketColor);
+  jacketLink.appendChild(jacketSize);
 
   jacketListItem.appendChild(jacketLink);
 
-
-  return jacketContainer;
+  return jacketListItem;
 }

@@ -9,3 +9,7 @@ function addToCart(jacket) {
   alert('Jacket added to cart');
 }
 
+addToCart();
+
+const 
+

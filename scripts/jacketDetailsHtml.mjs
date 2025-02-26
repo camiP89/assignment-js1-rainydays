@@ -1,52 +1,33 @@
-import { RAINY_DAYS_END_POINT } from './constants.mjs';
+import { RAINY_DAYS_END_POINT, API_SINGLE_JACKET_URL } from './constants.mjs';
 import { fetchData } from './fetchData.mjs';
 
-export async function createJacketDetailsHtml(jacket) {
-  const jacketDetailsContainer = document.getElementById('jacket-details-container');
-  jacketDetailsContainer.innerHtml = '';
+export function createJacketDetailsHtml(jacket) {
+  console.log(jacket); 
+  const jacketDetailsContainer = document.createElement('div');
 
-  const detailsDiv = document.createElement('div');
-  detailsDiv.classList.add('jacket-info')
+  const jacketTitle = document.createElement("h2");
+  jacketTitle.textContent = jacket.title;
 
   const jacketImage = document.createElement("img");
   jacketImage.src = jacket.image;
   jacketImage.alt = jacket.title;
 
-  const jacketTitle = document.createElement("h2");
-  jacketTitle.textContent = jacket.title;
-
+  const jacketDescription = document.createElement('p');
+  jacketDescription.textContent = jacket.description;
+  
   const jacketPrice = document.createElement("p");
   jacketPrice.textContent = `${jacket.price}`;
 
   const jacketColor = document.createElement("p");
   jacketColor.textContent = `Color: ${jacket.baseColor}`;
 
-  const sizeSelect = document.createElement("select");
-  sizeSelect.id = 'size-select';
-  jacket.sizes.forEach(size => {
-    const option = document.createElement("option");
-    option.value = size;
-    option.textContent = size;
-    sizeSelect.appendChild(option);
-  });
-
-  const jacketAddToCartButton = document.createElement("button");
+  const jacketAddToCartButton = document.createElement('button');
+  jacketAddToCartButton.addEventListener('click', function(){
+    console.log(add to cart);
+  })
   jacketAddToCartButton.textContent = "Add to cart";
-  jacketAddToCartButton.className = "add-to-cart-button";
-  jacketAddToCartButton.onclick = function () {
-    const selectedSize = document.getElementById('size-select').value;
-    const jacketToAdd = {
-      id: jacket.id,
-      title: jacket.title,
-      size: selectedSize,
-      price: jacket.price,
-      color: jacket.baseColor,
-      image: jacket.image
-    };
-    jacketAddToCartButton(jacketToAdd);
- };
 
-  detailsDiv.append(jacketImage, jacketTitle, jacketPrice, jacketColor, jacketSize, jacketAddToCartButton);
-  jacketDetailsContainer.appendChild(detailsDiv);
+  jacketDetailsContainer.append(jacketTitle, jacketImage, jacketDescription, jacketPrice, jacketColor, jacketAddToCartButton);
+
+  return jacketDetailsContainer();
 }
-  

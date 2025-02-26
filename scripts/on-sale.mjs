@@ -39,6 +39,13 @@ export function createSaleJacketsHtml(jacket) {
 export function displayJackets(jackets) {
   jacketContainer.textContent = '';
 
+  if (jackets.length === 0) { 
+    const noJacketMessage = document.createElement('p');
+    noJacketMessage.textContent = 'No Jackets are currently on sale.';
+    jacketContainer.appendChild(noJacketMessage);
+    return;
+  }
+
   jackets.forEach((jacket) => {
     const saleJacketsHtml = createSaleJacketsHtml(jacket);
     jacketContainer.append(saleJacketsHtml);
@@ -54,6 +61,8 @@ export async function sale() {
    displayJackets(saleJackets);
   } catch (error) {
     console.error('Error fetching jacket data', error);
+
+    jacketContainer.innerHTML = '<p>Failed to load sale jackets. Please try again later.';
   }
 }
 
