@@ -3,7 +3,7 @@ export function createSingleJacketHtml(jacket) {
   jacketListItem.classList.add("jacket-data-container");
 
   const jacketLink = document.createElement('a');
-  jacketLink.href = `/jacket-details/?id=${jacket.id}`;
+  jacketLink.href = `../jacket-details/?id=${jacket.id}`;
   console.log(jacket.id);
 
   const jacketTitle = document.createElement("h2");
