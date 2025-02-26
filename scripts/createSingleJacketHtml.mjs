@@ -8,6 +8,10 @@ export function createSingleJacketHtml(jacket) {
 
   const jacketTitle = document.createElement("h2");
   jacketTitle.textContent = `${jacket.title}`;
+  
+  const jacketPrice = document.createElement("p");
+  jacketPrice.textContent = `$${jacket.price}`; 
+  jacketPrice.classList.add('jacket-price'); 
 
   const jacketImage = document.createElement("img");
   if (jacket.image && jacket.image.url) {
@@ -17,20 +21,9 @@ export function createSingleJacketHtml(jacket) {
     console.error("Invalid or missing image URL:", jacket.image);
   }
 
-  const jacketPrice = document.createElement("p");
-  jacketPrice.textContent = `$${jacket.price}`;
-  
-  const jacketColor = document.createElement("p");
-  jacketColor.textContent = `${jacket.baseColor}`;
-
-  const jacketSize = document.createElement("p");
-  jacketSize.textContent = `${jacket.sizes.join(", ")}`;
-
   jacketLink.appendChild(jacketTitle);
-  jacketLink.appendChild(jacketImage);
   jacketLink.appendChild(jacketPrice);
-  jacketLink.appendChild(jacketColor);
-  jacketLink.appendChild(jacketSize);
+  jacketLink.appendChild(jacketImage);
 
   jacketListItem.appendChild(jacketLink);
 

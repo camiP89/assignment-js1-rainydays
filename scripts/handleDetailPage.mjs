@@ -18,7 +18,7 @@ export function getIdFromURL() {
 
 const jacketDetailsContainer = document.querySelector('#jacket-details-container');
 
-async function mainId() {
+export async function mainId() {
   const jacketId = getIdFromURL();
   if (!jacketId) {
     console.error("No jacket was found in the URL!");

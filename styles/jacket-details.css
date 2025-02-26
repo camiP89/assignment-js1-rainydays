@@ -1,7 +1,7 @@
 .jacket-details-container {
   display: flex;
   flex-direction: column;
-  border: 5px solid var(--dark-blue);
+  border: 8px solid var(--dark-blue);
   border-radius: 5px;
   margin: 10px 10px;
   padding: 10px;
@@ -38,7 +38,122 @@
   margin: 0 40px;
 }
 
+.jacket-details-container .jacket-color {
+  font-weight: 800;
+}
+
 .jacket-details-container p {
   font-family: "Alumni sans", Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 1.1rem;
+  font-size: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
+  padding: 20px;
+  margin: 20px
 }
+
+.section {
+  display: flex;
+  align-items: center;
+  background-color: #113340;
+  max-width: 100%;
+  padding: 10px;
+  margin: 20px;
+}
+
+.jacket {
+  width: 50%;
+  height: auto;
+  float: left;
+}
+
+
+.price {
+  font-size: 1.2rem;
+  color: #fff;
+  padding-left: 20px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(205, 215, 215);
+  max-width: 100%;
+  padding: 20px;
+  margin: 20px
+}
+
+
+.info-p {
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+
+}
+
+.color,
+.choose-size {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 10px
+}
+
+.size-container {
+  display: flex;
+  flex-wrap: wrap; 
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 600px) {
+  .jacket-details-container {
+      margin: 50px
+  }
+
+  
+  .jacket-details-container img {
+      width: 70%;
+  }
+
+  .info {
+      margin: 50px;
+      padding: 30px;
+ 
+  }
+
+  h2 {
+      font-size: 2.7rem;
+  }
+  
+  .color,
+  .choose-size {
+      font-size: 1.6rem;
+      font-weight: bold;
+      margin-bottom: 30px;
+  }
+  
+  .price {
+      font-size: 2rem;
+      padding-left: 20px;
+      justify-content: flex-start;
+  }
+
+  .info-p {
+      font-size: 1.8rem;
+      max-width: 800px;
+  }
+}
+
+
+
+
+
+

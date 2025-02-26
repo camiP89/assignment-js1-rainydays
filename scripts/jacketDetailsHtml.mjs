@@ -1,9 +1,7 @@
-//import { RAINY_DAYS_END_POINT } from './constants.mjs';
-//import { fetchData } from './fetchData.mjs';
-
 export function createJacketDetailsHtml(jacket) {
   console.log(jacket); 
   const jacketDetailsContainer = document.createElement('div');
+  jacketDetailsContainer.classList.add('jacket-details-container');
 
   const jacketTitle = document.createElement("h2");
   jacketTitle.textContent = jacket.title;
@@ -21,9 +19,11 @@ export function createJacketDetailsHtml(jacket) {
   
   const jacketPrice = document.createElement("p");
   jacketPrice.textContent = `${jacket.price}`;
+  jacketPrice.classList.add('jacket-price');
 
   const jacketColor = document.createElement("p");
   jacketColor.textContent = `Color: ${jacket.baseColor}`;
+  jacketColor.classList.add('jacket-color');
 
   const jacketAddToCartButton = document.createElement('button');
   jacketAddToCartButton.addEventListener('click', function(){
