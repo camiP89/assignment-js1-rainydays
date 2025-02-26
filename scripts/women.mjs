@@ -11,6 +11,9 @@ function createWomensJacketsHtml(jacket) {
   const jacketDataContainer = document.createElement('div');
   jacketDataContainer.classList.add('jacket-data-container');
 
+  const jacketLink = document.createElement('a');
+  jacketLink.href = `../jacket-details/?id=${jacket.id}`;
+
   const jacketTitle = document.createElement('h2');
   jacketTitle.textContent = jacket.title;
 
@@ -27,7 +30,9 @@ function createWomensJacketsHtml(jacket) {
     console.error('invalid image URL:', jacket.image);
   }
 
-  jacketDataContainer.append(jacketTitle, jacketPrice, jacketImage);
+  jacketLink.append(jacketTitle, jacketPrice, jacketImage);
+  jacketDataContainer.appendChild(jacketLink);
+
   return jacketDataContainer;
 }
 
@@ -49,3 +54,5 @@ async function woman() {
 }
 
 woman();
+
+

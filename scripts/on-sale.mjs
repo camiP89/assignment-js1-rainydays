@@ -6,6 +6,9 @@ const jacketContainer = document.getElementById('jacket-container');
 export function createSaleJacketsHtml(jacket) {
   const jacketDataContainer = document.createElement('div');
   jacketDataContainer.classList.add('jacket-data-container');
+  
+  const jacketLink = document.createElement('a');
+  jacketLink.href = `../jacket-details/?id=${jacket.id}`;
 
   const jacketTitle = document.createElement('h2');
   jacketTitle.textContent = jacket.title;
@@ -33,6 +36,8 @@ export function createSaleJacketsHtml(jacket) {
   }
 
   jacketDataContainer.append(jacketImage);
+
+  jacketDataContainer.appendChild(jacketLink);
   return jacketDataContainer;
 }
 
@@ -55,14 +60,11 @@ export function displayJackets(jackets) {
 export async function sale() {
   try { 
    const allJackets = await fetchData(RAINY_DAYS_END_POINT);
-
    const saleJackets = allJackets.filter(jacket => jacket.onSale === true);
- 
    displayJackets(saleJackets);
   } catch (error) {
     console.error('Error fetching jacket data', error);
-
-    jacketContainer.innerHTML = '<p>Failed to load sale jackets. Please try again later.';
+    jacketContainer.innerHtml = '<p>Failed to load sale jackets. Please try again later.';
   }
 }
 

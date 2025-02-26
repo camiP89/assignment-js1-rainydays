@@ -1,12 +1,14 @@
 import { RAINY_DAYS_END_POINT } from './constants.mjs';
 import { fetchData } from './fetchData.mjs';
 import { createSaleJacketsHtml, displayJackets, sale } from './on-sale.mjs';
-//import { getIdFromURL, mainId} from './handleDetailPage.mjs'
-//import { createJacketDetailsHtml } from "./jacketDetailsHtml.mjs";
 
 let headingText = "SALE ITEMS";
 let heading = document.querySelector("h1");
 heading.innerHTML = headingText;
 
-sale();
+document.addEventListener('DOMContentLoaded', () => {
+  
+  sale();
+});
+
 
