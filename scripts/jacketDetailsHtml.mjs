@@ -26,6 +26,7 @@ export function createJacketDetailsHtml(jacket) {
   jacketColor.classList.add('jacket-color');
 
   const jacketAddToCartButton = document.createElement('button');
+  jacketAddToCartButton.classList.add('jacket-add-to-cart');
   jacketAddToCartButton.addEventListener('click', function(){
   });
   jacketAddToCartButton.textContent = "Add to cart";

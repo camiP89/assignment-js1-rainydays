@@ -1,8 +1,6 @@
 import { RAINY_DAYS_END_POINT } from './constants.mjs';
 import { fetchData } from "./fetchData.mjs";
 import { createJacketDetailsHtml } from "./jacketDetailsHtml.mjs";
-//import { createSingleJacketHtml } from './createSingleJacketHtml.mjs';
-//import { createJacketDetailsHtml } from './jacketDetailsHtml.mjs';
 
 let headingText = "Jacket Details";
 let heading = document.querySelector("h1");
