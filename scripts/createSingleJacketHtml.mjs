@@ -1,17 +1,21 @@
 export function createSingleJacketHtml(jacket) {
-  console.log(jacket);
   const jacketListItem = document.createElement("div");
   jacketListItem.classList.add("jacket-data-container");
 
   const jacketLink = document.createElement('a');
-  jacketLink.href = `/jackets/?id=${jacket.id}`;
+  jacketLink.href = `/jacket-details/?id=${jacket.id}`;
   console.log(jacket.id);
 
   const jacketTitle = document.createElement("h2");
   jacketTitle.textContent = `${jacket.title}`;
 
   const jacketImage = document.createElement("img");
-  jacketImage.src = `${jacket.image.url}`;
+  if (jacket.image && jacket.image.url) {
+    jacketImage.src = jacket.image.url;
+    jacketImage.alt = jacket.image.alt || "Jacket Image";
+  } else {
+    console.error("Invalid or missing image URL:", jacket.image);
+  }
 
   const jacketPrice = document.createElement("p");
   jacketPrice.textContent = `$${jacket.price}`;
@@ -32,3 +36,6 @@ export function createSingleJacketHtml(jacket) {
 
   return jacketListItem;
 }
+
+
+ 

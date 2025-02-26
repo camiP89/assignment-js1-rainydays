@@ -1,5 +1,5 @@
-import { RAINY_DAYS_END_POINT, API_SINGLE_JACKET_URL } from './constants.mjs';
-import { fetchData } from './fetchData.mjs';
+//import { RAINY_DAYS_END_POINT } from './constants.mjs';
+//import { fetchData } from './fetchData.mjs';
 
 export function createJacketDetailsHtml(jacket) {
   console.log(jacket); 
@@ -9,8 +9,12 @@ export function createJacketDetailsHtml(jacket) {
   jacketTitle.textContent = jacket.title;
 
   const jacketImage = document.createElement("img");
-  jacketImage.src = jacket.image;
-  jacketImage.alt = jacket.title;
+  if (jacket.image && jacket.image.url) {
+    jacketImage.src = jacket.image.url;
+    jacketImage.alt = jacket.image.alt || "Jacket Image";
+  } else {
+    console.error("Invalid or missing image URL:", jacket.image);
+  }
 
   const jacketDescription = document.createElement('p');
   jacketDescription.textContent = jacket.description;
@@ -23,11 +27,10 @@ export function createJacketDetailsHtml(jacket) {
 
   const jacketAddToCartButton = document.createElement('button');
   jacketAddToCartButton.addEventListener('click', function(){
-    console.log(add to cart);
-  })
+  });
   jacketAddToCartButton.textContent = "Add to cart";
 
   jacketDetailsContainer.append(jacketTitle, jacketImage, jacketDescription, jacketPrice, jacketColor, jacketAddToCartButton);
 
-  return jacketDetailsContainer();
+  return jacketDetailsContainer;
 }
