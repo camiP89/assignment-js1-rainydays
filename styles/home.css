@@ -71,6 +71,7 @@
     color: var(--white);
     background-color: red;
     margin: 0 40px;
+    text-decoration: none;
 }
 
 .jacket-data-container .jacket-price {
