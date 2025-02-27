@@ -36,7 +36,7 @@ export function createSaleJacketsHtml(jacket) {
   viewMoreButton.classList.add('view-more-button');
   viewMoreButton.textContent = "View More"
   viewMoreButton.addEventListener('click', function(){
-    window.location.href = `jacket-details/?id=${jacket.id}`;
+    window.location.href = `/jacket-details/?id=${jacket.id}`;
   });
 
   jacketDataContainer.append(jacketImage, viewMoreButton);
