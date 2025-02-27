@@ -8,7 +8,7 @@ export function createSaleJacketsHtml(jacket) {
   jacketDataContainer.classList.add('jacket-data-container');
   
   const jacketLink = document.createElement('a');
-  jacketLink.href = `../jacket-details/?id=${jacket.id}`;
+  jacketLink.href = `/jacket-details/?id=${jacket.id}`;
 
   const jacketTitle = document.createElement('h2');
   jacketTitle.textContent = jacket.title;
@@ -37,8 +37,9 @@ export function createSaleJacketsHtml(jacket) {
 
   jacketDataContainer.append(jacketImage);
 
-  jacketDataContainer.appendChild(jacketLink);
-  return jacketDataContainer;
+  jacketLink.appendChild(jacketDataContainer);
+
+  return jacketLink;
 }
 
 export function displayJackets(jackets) {
