@@ -18,7 +18,7 @@ export function createJacketDetailsHtml(jacket) {
   jacketDescription.textContent = jacket.description;
   
   const jacketPrice = document.createElement("p");
-  jacketPrice.textContent = `${jacket.price}`;
+  jacketPrice.textContent = `$${jacket.price}`;
   jacketPrice.classList.add('jacket-price');
 
   const jacketColor = document.createElement("p");
