@@ -7,9 +7,6 @@ export function createSaleJacketsHtml(jacket) {
   const jacketDataContainer = document.createElement('div');
   jacketDataContainer.classList.add('jacket-data-container');
   
-  const jacketLink = document.createElement('a');
-  jacketLink.href = `./jacket-details/?id=${jacket.id}`;
-
   const jacketTitle = document.createElement('h2');
   jacketTitle.textContent = jacket.title;
 
@@ -35,11 +32,16 @@ export function createSaleJacketsHtml(jacket) {
     console.error('invalid image URL:', jacket.image);
   }
 
-  jacketDataContainer.append(jacketImage);
+  const viewMoreButton = document.createElement('button');
+  viewMoreButton.classList.add('view-more-button');
+  viewMoreButton.textContent = "View More"
+  viewMoreButton.addEventListener('click', function(){
+    window.location.href = `../jacket-details/?id=${jacket.id}`;
+  });
 
-  jacketLink.appendChild(jacketDataContainer);
+  jacketDataContainer.append(jacketImage, viewMoreButton);
 
-  return jacketLink;
+  return jacketDataContainer;
 }
 
 export function displayJackets(jackets) {

@@ -97,7 +97,8 @@ nav a:checked {
 }
 
 .cta,
-.jacket-add-to-cart {
+.jacket-add-to-cart,
+.view-more-button {
     display: flex;
     justify-content: center;
     align-items: center;

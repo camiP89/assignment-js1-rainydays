@@ -11,9 +11,6 @@ function generateMensJacketsHtml(jacket) {
   const jacketDataContainer = document.createElement('div');
   jacketDataContainer.classList.add('jacket-data-container');
 
-  const jacketLink = document.createElement('a');
-  jacketLink.href = `../jacket-details/?id=${jacket.id}`;
-
   const jacketTitle = document.createElement('h2');
   jacketTitle.textContent = jacket.title;
 
@@ -22,7 +19,6 @@ function generateMensJacketsHtml(jacket) {
   jacketPrice.textContent = `$${jacket.price}`;
 
   const jacketImage = document.createElement('img');
-
   if (jacket.image && typeof jacket.image.url === 'string') {
     jacketImage.src = jacket.image.url;
     jacketImage.alt = jacket.image.alt;
@@ -30,8 +26,14 @@ function generateMensJacketsHtml(jacket) {
     console.error('invalid image URL:', jacket.image);
   }
 
-  jacketLink.append(jacketTitle, jacketPrice, jacketImage);
-  jacketDataContainer.appendChild(jacketLink);
+  const viewMoreButton = document.createElement('button');
+  viewMoreButton.classList.add('view-more-button');
+  viewMoreButton.textContent = "View More"
+  viewMoreButton.addEventListener('click', function(){
+    window.location.href = `../jacket-details/?id=${jacket.id}`;
+  });
+  
+  jacketDataContainer.append(jacketTitle, jacketPrice, jacketImage, viewMoreButton);
 
   return jacketDataContainer;
 }
