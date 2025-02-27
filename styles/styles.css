@@ -283,7 +283,7 @@ footer a:focus {
     margin-top: 0;
 }
 
-@media (min-width: 400px) {
+@media (min-width: 450px) {
     #jacket-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
