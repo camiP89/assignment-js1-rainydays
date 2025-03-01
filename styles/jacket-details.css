@@ -82,6 +82,11 @@
   color: var(--yellow);
 }
 
+.add-to-cart-button:hover {
+  background-color: var(--dark-blue);
+  color: var(--yellow);
+}
+
 @media (min-width: 600px) {
   .jacket-details-container {
       margin: 50px
