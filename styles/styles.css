@@ -122,10 +122,8 @@ nav a:checked {
 
 .cta:hover,
 .cta:focus {
-    color: var(--dark-blue);
-    font-size: 1.5rem;
-    font-weight: 700;
-    background-color: var(--white);
+    background-color: var(--dark-blue);
+    color: var(--yellow);
     transform: scale(1.05);
     transition: all 0.1s ease;
 }
@@ -192,7 +190,7 @@ nav a:checked {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     padding: 10px 20px;
     margin: 10px;
     font-weight: 600;

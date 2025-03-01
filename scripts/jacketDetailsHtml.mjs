@@ -8,6 +8,10 @@ export function createJacketDetailsHtml(jacket) {
   const jacketTitle = document.createElement("h2");
   jacketTitle.textContent = jacket.title;
 
+  const jacketPrice = document.createElement("p");
+  jacketPrice.textContent = `$${jacket.price}`;
+  jacketPrice.classList.add('jacket-price');
+
   const jacketImage = document.createElement("img");
   if (jacket.image && jacket.image.url) {
     jacketImage.src = jacket.image.url;
@@ -18,11 +22,33 @@ export function createJacketDetailsHtml(jacket) {
 
   const jacketDescription = document.createElement('p');
   jacketDescription.textContent = jacket.description;
-  
-  const jacketPrice = document.createElement("p");
-  jacketPrice.textContent = `$${jacket.price}`;
-  jacketPrice.classList.add('jacket-price');
 
+  const sizeLabel = document.createElement("label");
+  sizeLabel.textContent = "Select Size:";
+
+  const sizeButtonsContainer = document.createElement('div');
+  sizeButtonsContainer.classList.add("size-buttons-container");
+
+  let selectedSize = null;
+
+  jacket.sizes.forEach(size => {
+    const sizeButton = document.createElement("button");
+    sizeButton.classList.add("size-button");
+    sizeButton.textContent = size;
+
+    sizeButton.addEventListener('click', () => {
+      const allButtons = sizeButtonsContainer.querySelectorAll("button");
+      allButtons.forEach(button => button.classList.remove("active"));
+
+      sizeButton.classList.add("active");
+
+      selectedSize = size;
+      console.log("Selected size:", selectedSize);
+    });
+
+    sizeButtonsContainer.appendChild(sizeButton);
+  });
+  
   const jacketColor = document.createElement("p");
   jacketColor.textContent = `Color: ${jacket.baseColor}`;
   jacketColor.classList.add('jacket-color');
@@ -32,10 +58,17 @@ export function createJacketDetailsHtml(jacket) {
   addToCartButton.textContent = "Add to cart";
 
   addToCartButton.addEventListener('click', function () {
-    addToCart(jacket);
+    if (selectedSize) {
+      jacket.selectedSize = selectedSize;
+      alert('Jacket has been added to cart.');
+
+      addToCart(jacket);
+    } else {
+      alert('Please select a size before adding to the cart.');
+    }
   });
 
-  jacketDetailsContainer.append(jacketTitle, jacketImage, jacketDescription, jacketPrice, jacketColor, addToCartButton);
+  jacketDetailsContainer.append(jacketTitle, jacketPrice, jacketImage, jacketDescription, sizeButtonsContainer, jacketColor, addToCartButton);
 
   return jacketDetailsContainer;
 }
