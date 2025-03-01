@@ -25,6 +25,7 @@
             </label>
             <a href="../cart/index.html" aria-label="Cart">
                 <i class="fa-solid fa-basket-shopping"></i>
+                <span id="cart-count">0</span>
             </a>
         </div>
         <input type="checkbox" id="menu-checkbox">
@@ -34,7 +35,8 @@
             <a href="../women/index.html">Women</a>
             <a href="../about.html">About</a>
             <a href="../cart/index.html" aria-label="Cart">
-                <i class="fa-solid fa-basket-shopping"></i>Cart  
+                <i class="fa-solid fa-basket-shopping"></i>Cart 
+                <span id="cart-count">0</span> 
             </a>
         </nav>
         <div class="logo-container">
@@ -45,18 +47,15 @@
     </header>
     <main>
         <h1 class="heading-jackets"></h1>
+        <div class="filter-gender-buttons">
+            <label for="filter-gender-buttons" class="filter-label">Filter by Gender</label>
+            <button id="filter-gender-all">All</button>
+            <button id="filter-gender-men">Men</button>
+            <button id="filter-gender-women">Women</button>
+        </div>
         <div id="jacket-container">
             
         </div>
-        <section id="filters">
-            <label for="gender">Gender</label>
-            <select name="id" id="gender">
-                <option value="all">All</option>
-                <option value="male">Men</option>
-                <option value="femail">Women</option>
-            </select>
-            <button id="filterButton" class="filter-button">Apply Filters</button>
-        </section>
     </main>
     <footer>
         <div class="logo-container-footer">

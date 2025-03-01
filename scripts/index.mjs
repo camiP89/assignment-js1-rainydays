@@ -7,8 +7,8 @@ let heading = document.querySelector("h1");
 heading.innerHTML = headingText;
 
 document.addEventListener('DOMContentLoaded', () => {
-  
-  sale();
+
+sale();
 });
 
 

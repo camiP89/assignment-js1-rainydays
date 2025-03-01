@@ -1,3 +1,5 @@
+import { addToCart } from "./cart.mjs";
+
 export function createJacketDetailsHtml(jacket) {
   console.log(jacket); 
   const jacketDetailsContainer = document.createElement('div');
@@ -25,13 +27,15 @@ export function createJacketDetailsHtml(jacket) {
   jacketColor.textContent = `Color: ${jacket.baseColor}`;
   jacketColor.classList.add('jacket-color');
 
-  const jacketAddToCartButton = document.createElement('button');
-  jacketAddToCartButton.classList.add('jacket-add-to-cart');
-  jacketAddToCartButton.addEventListener('click', function(){
-  });
-  jacketAddToCartButton.textContent = "Add to cart";
+  const addToCartButton = document.createElement('button');
+  addToCartButton.classList.add('jacket-add-to-cart');
+  addToCartButton.textContent = "Add to cart";
 
-  jacketDetailsContainer.append(jacketTitle, jacketImage, jacketDescription, jacketPrice, jacketColor, jacketAddToCartButton);
+  addToCartButton.addEventListener('click', function () {
+    addToCart(jacket);
+  });
+
+  jacketDetailsContainer.append(jacketTitle, jacketImage, jacketDescription, jacketPrice, jacketColor, addToCartButton);
 
   return jacketDetailsContainer;
 }

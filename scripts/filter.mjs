@@ -1,42 +1,23 @@
-import { displayJackets } from "./createJacketsHtml.mjs";
-import { fetchData } from "./fetchData.mjs";
+import { createJacketsHtml } from "./createJacketsHtml.mjs";
 
-const filterButton = document.getElementById("filterButton");
-const genderFilter = document.getElementById("gender");
-const RAINY_DAYS_END_POINT = "https://v2.api.noroff.dev/rainy-days";
+export function handleGenderFilter (jackets, genderFilter) {
+  const jacketContainer = document.getElementById('jacket-container');
+  jacketContainer.innerHTML = '';
 
-let allJackets = [];
+  const filteredJackets = jackets.filter((currentJacket) => {
+    if (genderFilter === 'All') {
+      return true;
+    }
+    if (genderFilter === 'Male' && currentJacket.gender === 'Male') {
+      return true;
+    }
+    if (genderFilter === 'Female' && currentJacket.gender === 'Female') {
+      return true;
+    }
+    return false;    
+  });
+console.log("Filtered Jackets:", filteredJackets);
 
-async function fetchJackets() {
-  try {
-    allJackets = await fetchData(RAINY_DAYS_END_POINT);
-    displayJackets(allJackets);
-  } catch (error) {
-    console.error("Failed to load jackets:", error);
-  }
+createJacketsHtml(filteredJackets);
 }
-
-export async function filterByGender() {
-  try {
-    const selectedGender = genderFilter.value;
-
-    let jacketsToDisplay =  [];   
-
-  if (SelectedGender !== "all") {
-    jacketsToDisplay = allJackets.filter(jacket => jacket.gender === selectedGender);
-  } else {
-    jacketsToDisplay = allJackets;
-  }
-
-   displayJackets(jacketsToDisplay);
-  } catch (error) {
-   console.error("Error filtering jackets:", error);
-  }
-}
-
-window.onload = async () => {
-  await fetchJackets();
-  filterButton.addEventListener("click", filterGender);
-};
-
 
