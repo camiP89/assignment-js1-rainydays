@@ -82,7 +82,7 @@
   color: var(--yellow);
 }
 
-.add-to-cart-button:hover {
+.size-button:active {
   background-color: var(--dark-blue);
   color: var(--yellow);
 }

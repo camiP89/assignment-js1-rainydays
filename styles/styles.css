@@ -120,8 +120,7 @@ nav a:checked {
     cursor: pointer;
 }
 
-.cta:hover,
-.cta:focus {
+.cta:active {
     background-color: var(--dark-blue);
     color: var(--yellow);
     transform: scale(1.05);
