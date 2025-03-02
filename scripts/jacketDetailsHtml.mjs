@@ -1,7 +1,7 @@
 import { addToCart } from "./cart.mjs";
 
 export function createJacketDetailsHtml(jacket) {
-  console.log(jacket); 
+
   const jacketDetailsContainer = document.createElement('div');
   jacketDetailsContainer.classList.add('jacket-details-container');
 
@@ -42,8 +42,7 @@ export function createJacketDetailsHtml(jacket) {
 
       sizeButton.classList.add("active");
 
-      selectedSize = size;
-      console.log("Selected size:", selectedSize);
+      selectedSize = size
     });
 
     sizeButtonsContainer.appendChild(sizeButton);
@@ -56,7 +55,6 @@ export function createJacketDetailsHtml(jacket) {
   const addToCartButton = document.createElement('button');
   addToCartButton.classList.add('jacket-add-to-cart');
   addToCartButton.textContent = "Add to cart";
-
   addToCartButton.addEventListener('click', function () {
     if (selectedSize) {
       jacket.selectedSize = selectedSize;

@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
   updateCartTotal();
   updateCartCount();
 
-  const checkoutButton = document.createElement('button');
+  let checkoutButton = document.createElement('button');
   checkoutButton.id = 'checkout-button';
   checkoutButton.classList.add('checkout-button');
   checkoutButton.textContent = "Proceed to Checkout";
@@ -28,14 +28,39 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
+export function addToCart(jacket) {
+  if (!jacket.selectedSize) {
+    alert('Please select a size.')
+    return;
+  }  
+
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const existingJacketIndex = cart.findIndex(item => item.title === jacket.title && item.selectedSize === jacket.selectedSize);
+
+  if (existingJacketIndex !== -1) {
+    cart[existingJacketIndex].quantity++;
+  } else {
+    jacket.quantity = 1;
+    cart.push(jacket);
+  }
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+  updateCartCount();
+  updateCartTotal();
+}
+
+export function removeJacketFromCart(index) { 
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+  cart.splice(index, 1);
+  localStorage.setItem('cart', JSON.stringify(cart));
+  updateCartCount();
+  updateCartTotal();
+}
+
 export function displayCartItems() {
   const cart = JSON.parse(localStorage.getItem('cart')) || [];
-  const cartContainer = document.getElementById('cart-container');
-  if (!cartContainer) {
-    console.error('Cart container not found');
-    return;
-  }
-    cartContainer.innerHTML = '';
+  const cartContainer = document.getElementById("cart-container");
+  cartContainer.innerHTML = '';
 
   if (cart.length === 0) {
     cartContainer.innerHTML = "<p>Your cart is empty.</p>";
@@ -45,7 +70,7 @@ export function displayCartItems() {
   cart.forEach((jacket, index) => {
     const jacketContainer = document.createElement('div');
     jacketContainer.classList.add('cart-jacket');
-    jacketContainer.id = `jacket-${index.title};` 
+    jacketContainer.id = `jacket-${index}`; 
   
     const jacketTitle = document.createElement("h4");
     jacketTitle.textContent = `${jacket.title}`;
@@ -65,116 +90,21 @@ export function displayCartItems() {
       console.error("Invalid or missing image URL:", jacket.image);
     }
 
-    const quantityContainer = document.createElement('div');
-    const decreaseButton = document.createElement('button');
-    decreaseButton.textContent = "-";
-    decreaseButton.addEventListener('click', function () {
-      if (jacket.quantity > 1) {
-        jacket.quantity--;
-        updateCart(jacket, index);
-        updateQuantityDisplay(index, jacket.quantity);
-        updateCartTotal();
-      }
-    });
-    
-    const quantityText = document.createElement('span');
-    quantityText.textContent = `Quantity: ${jacket.quantity}`;
-
-    const increaseButton = document.createElement('button');
-    increaseButton.textContent = "+";
-    increaseButton.addEventListener('click', function () {
-      jacket.quantity++;
-      updateCart(jacket, index);
-      updateQuantityDisplay(index, jacket.quantity);
-      updateCartTotal();
-    });
-
     const removeButton = document.createElement('button');
     removeButton.textContent = "Remove";
     removeButton.addEventListener('click', function () {
-      jacket.quantity++;
       removeJacketFromCart(index);
-      removeJacketDisplay(index);
-      updateCartTotal();
+      jacketContainer.remove();
     });
 
-    quantityContainer.appendChild(decreaseButton);
-    quantityContainer.appendChild(quantityText);
-    quantityContainer.appendChild(increaseButton);
-
-    jacketContainer.appendChild(jacketImage);
     jacketContainer.appendChild(jacketTitle);
     jacketContainer.appendChild(jacketPrice);
     jacketContainer.appendChild(jacketSize);
-    jacketContainer.appendChild(quantityContainer);
+    jacketContainer.appendChild(jacketImage);
     jacketContainer.appendChild(removeButton);
 
     cartContainer.appendChild(jacketContainer);
   });
-}
-
-function updateCart(jacket, index) {
-  const cart = JSON.parse(localStorage.getItem('cart')) || [];
-  cart[index] = jacket;
-  localStorage.setItem('cart', JSON.stringify(cart));
-}
-
-function updateQuantityDisplay(index, quantity) {
-  const quantityText = document.querySelector(`#jacket-${index} .cart-jacket span`);
-  if (quantityText) {
-    quantityText.textContent = `Quantity: ${quantity}`;
-  }
-}
-
-function removeJacketFromCart(index) { 
-  const cart = JSON.parse(localStorage.getItem('cart')) || [];
-  cart.splice(index, 1);
-  localStorage.setItem('cart', JSON.stringify(cart));
-}
-
-function removeJacketDisplay(index) {
-  const jacketContainer = document.getElementById(`jacket-${index}`);
-  if (jacketContainer) {
-    jacketContainer.remove();
-  }
-}
-
-function updateCartTotal() {
-  const totalCost = getCartTotal();
-  const totalPriceSpan = document.getElementById('total-price');
-  if (totalPriceSpan) {
-    totalPriceSpan.textContent = totalCost.toFixed(2);
-  } else {
-    console.error('Total price not found');
-  }
-}
-
-function getCartTotal() {
-  let totalCost = 0;
-  const cart =JSON.parse(localStorage.getItem('cart')) || [];
-  cart.forEach(jacket => totalCost += jacket.price * jacket.quantity);
-  return totalCost;
-}
-
-export function addToCart(jacket) {
-  if (!jacket.selectedSize) {
-    alert('Please select a size.')
-    return;
-  }  
-
-  const cart = JSON.parse(localStorage.getItem("cart")) || [];
-  const existingJacketIndex = cart.findIndex(item => item.title && item.selectedSize === jacket.selectedSize);
-
-  if (existingJacketIndex !== -1) {
-    cart[existingJacketIndex].quantity++;
-  } else {
-    jacket.quantity = 1;
-    cart.push(jacket);
-  }
-  localStorage.setItem("cart", JSON.stringify(cart));
-
-  updateCartCount();
-  updateCartTotal();
 }
 
 export function updateCartCount() {
@@ -184,3 +114,31 @@ export function updateCartCount() {
     cartCountContainer.textContent = cart.length;
  }
 }
+
+export function updateCartTotal() {
+  const totalCost = getCartTotal();
+  const totalPriceSpan = document.getElementById('total-price');
+  if (totalPriceSpan) {
+    totalPriceSpan.textContent = totalCost.toFixed(2);
+  } else {
+    console.error('Total price not found');
+  }
+}
+
+export function getCartTotal() {
+  const cart =JSON.parse(localStorage.getItem('cart')) || [];
+  return cart.reduce((total, jacket) => total + (jacket.price * jacket.quantity), 0);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
