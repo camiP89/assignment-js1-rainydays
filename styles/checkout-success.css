@@ -1,0 +1,27 @@
+#message-container {
+  background-color: #d9d9d9;
+  max-width: 100%;
+  height: 100vh;
+  margin: 20px;
+
+}
+
+.message {
+  display: flex;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 30px;
+  text-align: center;
+}
+
+@media (min-width:620px) {
+  #message-container {
+    margin: 20px 50px;
+  }
+
+  .message {
+    padding: 50px;
+    max-width: 600px;
+  }
+}

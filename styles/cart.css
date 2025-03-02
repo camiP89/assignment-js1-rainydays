@@ -38,13 +38,24 @@
 
 .cart-jacket p {
   color: var(--dark-blue);
+  font-weight: 800;
 }
 
-.cart-jacket,
+.cart-jacket h4 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-decoration: underline;
+  color: var(--dark-blue);
+}
+
 .jacket-price {
-  font-weight: bold;
+  font-weight: 900;
   color: var(--dark-blue);
   margin: 0;
+  font-weight: bolder;
+  font-size: 1.5rem;
+
+
 }
 
 #cart-count-container {
@@ -67,7 +78,7 @@
   border-radius: 5px;
   font-size: 1.2rem;
   font-weight: 800;
-
+  margin-left: 30px;
 }
 
 button {

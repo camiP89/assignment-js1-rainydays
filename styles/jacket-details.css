@@ -89,12 +89,12 @@
 
 @media (min-width: 600px) {
   .jacket-details-container {
-      margin: 50px
+    margin: 50px
   }
   
   .jacket-details-container img {
-      width: 70%;
-      display: flex;
+    width: 70%;
+    display: flex;
   }
 
   .jacket-details-container .jacket-price  {
@@ -102,13 +102,32 @@
   }
 
   .jacket-details-container h2 {
-      font-size: 2.5rem;
+    font-size: 2.5rem;
   }
 
   .jacket-details-container p {
-      font-size: 1.8rem;
-      max-width: 800px;
+    font-size: 1.8rem;
+    max-width: 800px;
+  }
+}
+
+@media (min-width: 800px) {
+  .jacket-details-container img {
+    width: 50%;
+  }
+
+  .jacket-details-container {
+    margin: 30px 100px;
   }
 }
 
 
+@media (min-width: 1000px) {
+  .jacket-details-container {
+    margin: 30px 100px;
+  }
+
+  .jacket-details-container img {
+    width: 30%;
+  }
+}

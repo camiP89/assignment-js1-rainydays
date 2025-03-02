@@ -35,7 +35,7 @@ body {
 }
 
 .mobile-header i {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     color: var(--dark-blue);
 }
 
@@ -50,7 +50,7 @@ nav,
 
 header {
     position: relative;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
 }
 
 nav {
