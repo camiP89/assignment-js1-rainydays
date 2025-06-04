@@ -62,7 +62,7 @@ export function addToCart(jacket) {
 
   requestAnimationFrame(() => {
     setTimeout(() => {
-      window.location.href = '/checkout/index.html';
+      window.location.href = '../checkout/index.html';
   }, 150);
  });
 }
