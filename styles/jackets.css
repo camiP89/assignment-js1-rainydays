@@ -38,6 +38,11 @@
  border-radius: 5px;
 }
 
+.filter-gender-buttons button.active {
+ background-color: var(--dark-blue);
+ color: var(--yellow);
+}
+
 @media (min-width: 700px) {
  .filter-gender-wrapper {
   margin: 20px 50px;

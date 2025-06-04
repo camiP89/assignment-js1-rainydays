@@ -1,4 +1,5 @@
 import { RAINY_DAYS_END_POINT } from "./constants.mjs";
+import { showSpinner, hideSpinner } from "./loadingSpinner.mjs";
 
 const options = {
   headers: {
@@ -17,12 +18,9 @@ export async function fetchData(url) {
     }
 
     const jsonData = await response.json();
-    const data = jsonData.data;
-
-    return data;
+    return jsonData.data;
   } catch (error) {
     console.error('Fetch error:', error.message);
-
     throw error;
   }
 }

@@ -1,5 +1,6 @@
 import { RAINY_DAYS_END_POINT } from './constants.mjs';
 import { fetchData } from './fetchData.mjs';
+import { showSpinner, hideSpinner } from "./loadingSpinner.mjs";
 
 let headingText = "Women";
 let heading = document.querySelector("h1");
@@ -48,14 +49,24 @@ function displayJackets(jackets) {
   });
 }
 
-async function woman() {
-  const allJackets = await fetchData(RAINY_DAYS_END_POINT);
+async function women() {
+  showSpinner();
+  try {
+    const allJackets = await fetchData(RAINY_DAYS_END_POINT);
+    const femaleJackets = allJackets.filter(jacket => jacket.gender === 'Female');
 
-  const femaleJackets = allJackets.filter(jacket => jacket.gender === 'Female');
- 
-  displayJackets(femaleJackets);
+    if (femaleJackets.length === 0) {
+      jacketContainer.textContent = 'No jackets found for women.';
+    } else {
+      displayJackets(femaleJackets);
+    }
+  } catch (error) {
+    console.error("Failed to fetch jackets:", error);
+    jacketContainer.textContent = "Failed to load jackets. Please try again later.";
+  } finally {
+  hideSpinner();
+  }
 }
 
-woman();
-
+women();
 
