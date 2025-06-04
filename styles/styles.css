@@ -1,61 +1,75 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@import url('./variables.css');
+
 header,
 footer,
 h1,
-h2 {
+h2,
+.jacket-data-container p {
   font-family: "Alumni sans", Verdana, Geneva, Tahoma, sans-serif;
 }
 
+.contact-details,
+.footer-links {
+  font-family: "Atma", Verdana, Geneva, Tahoma, sans-serif;
+}
+
 h1 {
-    position: relative;
-    background-color: var(--dark-blue);
-    color: var(--yellow);
-    font-size: 1.4rem;
-    text-decoration: underline;
-    width: 50%;
-    font-weight: bold;
-    height: 30px;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    margin-left: 20px;
+  position: relative;
+  background-color: var(--dark-blue);
+  color: var(--yellow);
+  font-size: 1.5rem;
+  text-decoration: none;
+  letter-spacing: 1px;
+  width: 100%;
+  font-weight: bold;
+  padding: 5px 15px;
+  margin: 20px;
+  width: calc(100% - 40px);
 }
 
 body {
-    font-family: "Cantarell", Georgia, 'Times New Roman', Times, serif;
-    background-color: var(--grey);
+  font-family: "Cantarell", Georgia, 'Times New Roman', Times, serif;
+  background-color: var(--grey);
 }
 
 .mobile-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px;
-    position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  position: relative;
+  border-bottom: solid 2px var(--dark-blue);
 }
 
 .mobile-header i {
-    font-size: 1.8rem;
-    color: var(--dark-blue);
+  font-size: 1.9rem;
+  color: var(--dark-blue);
 }
 
 nav,
 #menu-checkbox {
-    display: none;
+  display: none;
 }
 
 #menu-checkbox:checked + nav {
-    display: block;
+  display: block;
 }
 
 header {
-    position: relative;
-    font-size: 1.5rem;
+  position: relative;
+  font-size: 1.5rem;
 }
 
 nav {
     position: absolute;
-    background: var(--dark-blue);
+    background: var(--grey);
+    border: solid 1px var(--dark-blue);
     width: 100%;
     left: 0px;
     top: 50px;
@@ -64,7 +78,9 @@ nav {
 
 nav a {
     display: block;
-    color: var(--white);
+    color: var(--dark-blue);
+    border: solid 1px var(--dark-blue);
+    font-weight: 600;
     padding: 10px 20px;
     text-decoration: none;
 }
@@ -75,7 +91,6 @@ nav a:checked {
     background-color: var(--dark-blue);
     color: var(--yellow);
 }
-
 
 .logo-container {
     display: flex;
@@ -98,24 +113,26 @@ nav a:checked {
 
 .cta,
 .jacket-add-to-cart,
-.view-more-button {
+.view-more-button,
+.checkout-button,
+.buy-now-button {
     display: flex;
+    width: 100%;  
+    margin: 10px 20px;
+    width: calc(100% - 40px);  
     justify-content: center;
     align-items: center;
-    width: 160px;
     height: auto;
-    padding: 10px;
+    padding: 5px;
     background-color: var(--yellow);
     color: var(--dark-blue);
     text-decoration: none;
-    font-size: 1.2rem;
+    font-size: 1rem;
     letter-spacing: 1px;
     text-transform: uppercase;
-    margin: 20px;
     font-weight: 900;
     border: 4px solid var(--dark-blue);
     border-radius: 5px;
-    padding: 5px;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     cursor: pointer;
 }
@@ -127,36 +144,17 @@ nav a:checked {
     transition: all 0.1s ease;
 }
 
-.filter-label {
-    font-size: 1.2rem;
-    font-weight: 900;
-    margin-bottom: 10px;
-    color: var(--dark-blue);
-}
-
-.filter-gender-buttons {
-    display: flex;
-    gap: 10px;
-    margin: 10px;
-}
-
-.filter-gender-buttons button {
-    background-color: var(--yellow);
-    color: var(--dark-blue);
-    border: solid 4px var(--dark-blue);
-    border-radius: 5px;
-    font-size: 1rem;
-    letter-spacing: 1px;
-    font-weight: 700;
-    margin-bottom: 10px;
+.cta:hover {
+  background-color: var(--dark-blue);
+  color: var(--yellow);
 }
 
 #jacket-container {
     display: grid;
     grid-template-columns: 1fr;
-    margin: 10px;
+    margin: 20px;
     max-width: 100%;
-    gap: 10px;
+    gap: 15px;
 }
 
 .jacket-data-container {
@@ -179,10 +177,11 @@ nav a:checked {
     display: flex;
     justify-content: center;
     text-transform: uppercase;
-    font-size: 1.7rem;
+    font-size: 1.8rem;
     font-weight: 800;
     text-align: center;
     text-decoration: underline;
+    padding: 10px;
 }
 
 .jacket-data-container .jacket-price {
@@ -191,11 +190,10 @@ nav a:checked {
     align-items: center;
     font-size: 1.5rem;
     padding: 10px 20px;
-    margin: 10px;
     font-weight: 600;
     color: var(--yellow);
     background-color: var(--dark-blue);
-    margin: 0 40px;
+    margin: 10px 40px;
 }
 
 .jacket-data-container p {
@@ -209,6 +207,7 @@ nav a:checked {
     justify-content: center;
     align-items: center;
     border-top: 5px solid var(--dark-blue);  
+    margin-top: 20px;
 }
 
 .logo-footer {
@@ -281,16 +280,15 @@ footer a:focus {
 
 @media (min-width: 450px) {
     #jacket-container {
-    display: grid;
     grid-template-columns: repeat(2, 1fr);
     }
 }
 
-@media (min-width: 620px) {
+@media (min-width: 700px) {
     #menu-checkbox,
     .hamburger-icon, 
     .mobile-header {
-        display: none;
+    display: none;
     }
        
     nav {
@@ -307,16 +305,10 @@ footer a:focus {
     }
 
     h1 {
-    position: relative;
-    background-color: #113340;
-    color: #f2b544;
-    font-size: 2.5rem;
-    text-decoration: underline;
-    width: 50%;
-    font-weight: bold;
-    height: 60px;
+    font-size: 2rem;
     padding: 10px 20px;
-    margin-left: 50px;
+    margin: 20px 50px;
+    width: calc(100% - 100px);
     }
 
     .logo-container {
@@ -349,15 +341,23 @@ footer a:focus {
     }
 
     #jacket-container {
-    display: grid;
     grid-template-columns: repeat(3, 1fr); 
+    margin: 20px 50px;
+    width: calc(100% - 100px);
     }   
 } 
 
 @media (min-width:1120px) {
     #jacket-container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);  
-    } 
+    grid-template-columns: repeat(4, 1fr); 
+    margin: 20px 100px 0 100px;
+    width: calc(100% - 200px);
+    }
+    
+    h1 {
+    font-size: 2.5rem;
+    margin: 20px 100px;
+    width: calc(100% - 200px);
+    }
 }
 

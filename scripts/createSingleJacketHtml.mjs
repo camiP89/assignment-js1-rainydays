@@ -9,6 +9,9 @@ export function createSingleJacketHtml(jacket) {
   jacketPrice.textContent = `$${jacket.price}`; 
   jacketPrice.classList.add('jacket-price'); 
 
+  const imageWrapper = document.createElement("div");
+  imageWrapper.classList.add("image-wrapper");
+
   const jacketImage = document.createElement("img");
   if (jacket.image && jacket.image.url) {
     jacketImage.src = jacket.image.url;
@@ -16,6 +19,8 @@ export function createSingleJacketHtml(jacket) {
   } else {
     console.error("Invalid or missing image URL:", jacket.image);
   }
+
+  imageWrapper.appendChild(jacketImage)
 
   const viewMoreButton =document.createElement('button');
   viewMoreButton.classList.add('view-more-button');

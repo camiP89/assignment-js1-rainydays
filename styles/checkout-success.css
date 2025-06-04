@@ -1,3 +1,11 @@
+@import url('./variables.css');
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 #message-container {
   background-color: #d9d9d9;
   max-width: 100%;
@@ -11,17 +19,27 @@
   justify-content: center;
   font-size: 1.2rem;
   font-weight: 600;
-  padding: 30px;
+  padding: 30px 50px;
   text-align: center;
 }
 
-@media (min-width:620px) {
+@media (min-width:700px) {
   #message-container {
     margin: 20px 50px;
   }
 
   .message {
-    padding: 50px;
+    padding: 50px 100px;
     max-width: 600px;
+  }
+}
+
+@media (min-width:1120px) {
+  #message-container {
+    margin: 20px 100px;
+  }
+
+  .message {
+    padding: 100px 200px;
   }
 }

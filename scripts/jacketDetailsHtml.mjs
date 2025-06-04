@@ -38,9 +38,9 @@ export function createJacketDetailsHtml(jacket) {
 
     sizeButton.addEventListener('click', () => {
       const allButtons = sizeButtonsContainer.querySelectorAll("button");
-      allButtons.forEach(button => button.classList.remove("active"));
+      allButtons.forEach(button => button.classList.remove("selected"));
 
-      sizeButton.classList.add("active");
+      sizeButton.classList.add("selected");
 
       selectedSize = size
     });

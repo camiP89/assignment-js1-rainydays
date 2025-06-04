@@ -2,7 +2,7 @@ import { RAINY_DAYS_END_POINT } from './constants.mjs';
 import { fetchData } from './fetchData.mjs';
 import { createSaleJacketsHtml, displayJackets, sale } from './on-sale.mjs';
 
-let headingText = "SALE ITEMS";
+let headingText = "RAINYDAYS SALE JACKETS";
 let heading = document.querySelector("h1");
 heading.innerHTML = headingText;
 

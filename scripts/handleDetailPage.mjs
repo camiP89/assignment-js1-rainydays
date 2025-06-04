@@ -3,7 +3,7 @@ import { fetchData } from "./fetchData.mjs";
 import { createJacketDetailsHtml } from "./jacketDetailsHtml.mjs";
 
 let headingText = "Jacket Details";
-let heading = document.querySelector("h1");
+let heading = document.querySelector("h1.heading-jacket-details");
 heading.innerHTML = headingText;
 
 export function getIdFromURL() {

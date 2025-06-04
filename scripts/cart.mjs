@@ -1,41 +1,53 @@
 import { createJacketDetailsHtml } from "./jacketDetailsHtml.mjs";
 
 document.addEventListener('DOMContentLoaded', function() {
-  const headingText = "Cart";
-  const heading = document.querySelector("h1");
-  if (heading) {
-    heading.innerHTML = headingText;
-  }
-
-  displayCartItems();
-  updateCartTotal();
-  updateCartCount();
-
-  let checkoutButton = document.createElement('button');
-  checkoutButton.id = 'checkout-button';
-  checkoutButton.classList.add('checkout-button');
-  checkoutButton.textContent = "Proceed to Checkout";
-
-  document.getElementById('cart-total').appendChild(checkoutButton);
-
-  checkoutButton.addEventListener('click', function () {
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    if (cart.length === 0) {
-      alert('Your cart is empty. You must add items before proceeding to checkout.');
-    } else {
-      window.location.href = '../checkout/index.html';
+  if (window.location.pathname.includes("/cart")) {
+   const headingText = "Cart";
+   const heading = document.querySelector("h1");
+    if (heading) {
+     heading.innerHTML = headingText;
     }
-  });
+
+    displayCartItems();
+    updateCartTotal();
+    updateCartCount();
+
+    let checkoutButton = document.createElement('button');
+    checkoutButton.id = 'checkout-button';
+    checkoutButton.classList.add('checkout-button');
+    checkoutButton.textContent = "Proceed to Checkout";
+
+    document.getElementById('cart-total').appendChild(checkoutButton);
+
+    checkoutButton.addEventListener('click', function () {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      if (cart.length === 0) {
+        alert('Your cart is empty. You must add items before proceeding to checkout.');
+      } else {
+        window.location.href = '../checkout/index.html';
+      }
+    });
+  }
 });
 
 export function addToCart(jacket) {
+  const errorMessage = document.getElementById("cart-error-message");
+
   if (!jacket.selectedSize) {
-    alert('Please select a size.')
+    if (errorMessage) {
+      errorMessage.textContent = "Please select a size.";
+    }
     return;
-  }  
+  }
+  
+  if (errorMessage) {
+    errorMessage.textContent = "";
+  }
 
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
-  const existingJacketIndex = cart.findIndex(item => item.title === jacket.title && item.selectedSize === jacket.selectedSize);
+  const existingJacketIndex = cart.findIndex(
+    item => item.title === jacket.title && item.selectedSize === jacket.selectedSize
+  );
 
   if (existingJacketIndex !== -1) {
     cart[existingJacketIndex].quantity++;
@@ -47,6 +59,12 @@ export function addToCart(jacket) {
   localStorage.setItem("cart", JSON.stringify(cart));
   updateCartCount();
   updateCartTotal();
+
+  requestAnimationFrame(() => {
+    setTimeout(() => {
+      window.location.href = '/checkout/index.html';
+  }, 150);
+ });
 }
 
 export function removeJacketFromCart(index) { 
@@ -81,6 +99,7 @@ export function displayCartItems() {
 
     const jacketSize = document.createElement("p");
     jacketSize.textContent = `Size: ${jacket.selectedSize}`;
+    jacketSize.classList.add("jacket-size");
   
     const jacketImage = document.createElement("img");
     if (jacket.image && jacket.image.url) {
@@ -118,6 +137,7 @@ export function updateCartCount() {
 export function updateCartTotal() {
   const totalCost = getCartTotal();
   const totalPriceSpan = document.getElementById('total-price');
+
   if (totalPriceSpan) {
     totalPriceSpan.textContent = totalCost.toFixed(2);
   } else {
