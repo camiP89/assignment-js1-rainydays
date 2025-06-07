@@ -15,7 +15,7 @@ The implementation uses modern JavaScript features such as async/await for handl
 
 - HTML 
 - CSS
--JavaScript
+- JavaScript
 
 ## Getting Started 
 
