@@ -1,40 +1,39 @@
 import { createJacketDetailsHtml } from "./jacketDetailsHtml.mjs";
 import { showSpinner, hideSpinner } from "./loadingSpinner.mjs";
 
-document.addEventListener('DOMContentLoaded', function() {
-  if (window.location.pathname.includes("/cart")) {
-   const headingText = "Cart";
-   const heading = document.querySelector("h1");
-    if (heading) {
-     heading.innerHTML = headingText;
-    }
-
-    displayCartItems();
-    updateCartTotal();
-    updateCartCount();
-
-    let checkoutButton = document.createElement('button');
-    checkoutButton.id = 'checkout-button';
-    checkoutButton.classList.add('checkout-button');
-    checkoutButton.textContent = "Proceed to Checkout";
-
-    document.getElementById('cart-total').appendChild(checkoutButton);
-
-    checkoutButton.addEventListener('click', function () {
-      try {
-        const cart = JSON.parse(localStorage.getItem('cart')) || [];
-        if (cart.length === 0) {
-          alert('Your cart is empty. You must add items before proceeding to checkout.');
-        } else {
-          window.location.href = '../checkout/index.html';
-        }
-      } catch (error) {
-        console.error("Error proceeding to checkout:", error);
-        alert("Something went wrong. Please try again.");
-      }
-    });
+if (window.location.pathname.includes("/cart")) {
+  const headingText = "Cart";
+  const heading = document.querySelector("h1");
+  if (heading) {
+    heading.innerHTML = headingText;
   }
-});
+
+  displayCartItems();
+  updateCartTotal();
+  updateCartCount();
+
+  let checkoutButton = document.createElement('button');
+  checkoutButton.id = 'checkout-button';
+  checkoutButton.classList.add('checkout-button');
+  checkoutButton.textContent = "Proceed to Checkout";
+
+  document.getElementById('cart-total').appendChild(checkoutButton);
+
+  checkoutButton.addEventListener('click', function () {
+    try {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      if (cart.length === 0) {
+        alert('Your cart is empty. You must add items before proceeding to checkout.');
+      } else {
+        window.location.href = '../checkout/index.html';
+      }
+    } catch (error) {
+      console.error("Error proceeding to checkout:", error);
+      alert("Something went wrong. Please try again.");
+    }
+  });
+}
+
 
 export function addToCart(jacket) {
   const errorMessage = document.getElementById("cart-error-message");
