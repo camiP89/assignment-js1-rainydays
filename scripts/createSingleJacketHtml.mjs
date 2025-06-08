@@ -31,7 +31,6 @@ export function createSingleJacketHtml(jacket) {
 
   const jacketLink = document.createElement('a');
   jacketLink.href = `../jacket-details/?id=${jacket.id}`;
-  console.log(jacket.id);
 
   jacketListItem.appendChild(jacketTitle);
   jacketListItem.appendChild(jacketPrice);

@@ -16,7 +16,6 @@ export function handleGenderFilter (jackets, genderFilter) {
     }
     return false;    
   });
-console.log("Filtered Jackets:", filteredJackets);
 
 createJacketsHtml(filteredJackets);
 }
